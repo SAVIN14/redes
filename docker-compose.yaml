@@ -1,0 +1,101 @@
+services:
+  router1:
+    build:
+      context: ./router
+      dockerfile: Dockerfile
+    volumes:
+    - ./router:/app
+    networks:
+      subnet1:
+       ipv4_address: 172.20.1.2
+      subnet2:
+       ipv4_address: 172.20.2.3
+    environment:
+    - vizin={"router2":["172.20.2.2",1]}
+    - ip_do_roteador=172.20.1.2
+    - my_name=router1
+    cap_add:
+    - NET_ADMIN
+  
+  router2:
+    build:
+      context: ./router
+      dockerfile: Dockerfile
+    volumes:
+    - ./router:/app
+    networks:
+      subnet1:
+       ipv4_address: 172.20.1.4
+      subnet2:
+       ipv4_address: 172.20.2.2
+      subnet3:
+       ipv4_address: 172.20.3.3
+    environment:
+    - vizin={"router1":["172.20.1.2",1],"router3":["172.20.3.2",1]}
+    - ip_do_roteador=172.20.2.2
+    - my_name=router2
+    cap_add:
+    - NET_ADMIN
+  router3:
+    build:
+      context: ./router
+      dockerfile: Dockerfile
+    volumes:
+    - ./router:/app
+    networks:
+      subnet2:
+       ipv4_address: 172.20.2.4 
+      subnet3:
+       ipv4_address: 172.20.3.2
+      subnet4: 
+       ipv4_address: 172.20.4.4
+    environment:
+    - vizin={"router2":["172.20.2.2",1],"router4":["172.20.4.2",1]}
+    - ip_do_roteador=172.20.3.2
+    - my_name=router3
+    cap_add:
+    - NET_ADMIN
+  router4:
+    build:
+      context: ./router
+      dockerfile: Dockerfile
+    volumes:
+    - ./router:/app
+    networks:
+      subnet4:
+       ipv4_address: 172.20.4.2
+      subnet3:
+       ipv4_address: 172.20.3.4
+    environment:
+    - vizin={"router3":["172.20.3.2",1]}
+    - ip_do_roteador=172.20.4.2
+    - my_name=router4
+    cap_add:
+    - NET_ADMIN
+networks:
+  subnet1:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.20.1.0/24
+        gateway: 172.20.1.1
+  subnet2:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.20.2.0/24
+        gateway: 172.20.2.1
+  subnet3:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.20.3.0/24
+        gateway: 172.20.3.1
+  subnet4:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.20.4.0/24
+        gateway: 172.20.4.1
+        
+    
