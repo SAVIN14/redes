@@ -90,7 +90,7 @@ class Roteador:
                
 
 if __name__ == "__main__":
-    os.makedirs(ROTEADOR_NOME, exist_ok = True)
+    os.makedirs("lsdb", exist_ok = True)
     router = Roteador()
     threads = [
         threading.Thread(target=router.enviar_pacotes, daemon=True),
