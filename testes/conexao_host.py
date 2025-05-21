@@ -53,26 +53,26 @@ def main():
     for thread in threads:
         thread.join()
     
-    # summary = {}
+    summary = {}
     
-    # for frm, to, ok, tempo in results:
-    #     summary.setdefault(frm, []).append((to, ok, tempo))
+    for frm, to, ok, tempo in results:
+        summary.setdefault(frm, []).append((to, ok, tempo))
     
-    # total_ok = 0
-    # total = len(results)
+    total_ok = 0
+    total = len(results)
     
-    # for frm in sorted(summary):
-    #     print(f"\n=== Host {frm} ===")
+    for frm in sorted(summary):
+        print(f"\n=== Host {frm} ===")
         
-    #     for to, ok, tempo in summary[frm]:
+        for to, ok, tempo in summary[frm]:
             
-    #         status = "OK" if ok else "Falha"
+            status = "OK" if ok else "Falha"
             
-    #         print(f"{frm} -> {to}: {status} ({tempo:.2f}s)")
-    #         if ok:
-    #             total_ok += 1
+            print(f"{frm} -> {to}: {status} ({tempo:.2f}s)")
+            if ok:
+                total_ok += 1
             
-    # print(f"\nTotal de pings: {total}, Sucessos: {total_ok}, Falhas: {total - total_ok}")
+    print(f"\nTotal de pings: {total}, Sucessos: {total_ok}, Falhas: {total - total_ok}")
 
 if __name__ == "__main__":
     main()
