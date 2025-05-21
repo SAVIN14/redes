@@ -15,26 +15,6 @@ Este projeto simula uma rede de computadores com múltiplos hosts e roteadores u
 - **Threading**: Execução paralela de tarefas.
 - **UDP**: Comunicação entre roteadores.
 
-## Estrutura do Projeto
-
-```
-prova_1_rayner/
-├── router/           # Código dos roteadores
-│   ├── router.py
-│   ├── dycastra.py
-│   ├── formater.py
-│   └── Dockerfile
-├── host/             # Código dos hosts
-│   ├── host.py
-│   └── Dockerfile
-├── scripts_test/     # Scripts de teste
-│   ├── router_show_tables.py
-│   ├── router_connect_router.py
-│   ├── user_connect_router.py
-│   └── user_connect_user.py
-├── docker-compose.yml
-└── makefile
-```
 
 ## Como Executar
 
