@@ -20,7 +20,7 @@ Este projeto simula uma rede de computadores com múltiplos hosts e roteadores u
 
 1. **Clone o repositório**:
    ```bash
-   git clone https://github.com/KauaHenSilva/{Nome_Repositorio}.git
+   git clone https://github.com/SAVIN14/{redes}.git
    cd {Nome_Repositorio}
    ```
 
